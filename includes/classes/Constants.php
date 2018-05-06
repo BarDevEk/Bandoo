@@ -1,29 +1,16 @@
 <?php 
 
-	class Constants{
-		public static $usertNameLength      = "Username must be between 5 and 25 characters";
-		public static $firstNameLength       = "Please insert your real fisrt name";
-		public static $lastNameLength        = "Please insert your real last name";
-		
-		public static $emailsNotEqual        = "Inserted emails aren't equal";
-		public static $emailInvalid          = "Please insert a valid e-mail adress";
-		
-		public static $passwordInvalidLenght = "Password must be between 6 and 25 characters";
-		public static $passwordInvalidChar   = "Password can only contains numbers and letters";
-		public static $passwordsNotEqual     = "Inserted passwords aren't equal";
+class Constants {
 
+	public static $passwordsDoNotMatch = "Your Password don't match";
+	public static $passwordNotAlphanumeric = "Your password can only contain numbers and letters";
+	public static $PasswordCharacters = "Your password must be between 5 and 25 characters";
+	public static $emailInvalid = "Email is invalid";
+	public static $emailsDoNotMatch = "Your Emais don't match";
+	public static $lastNameCharacters = "Please insert your real last name";
+	public static $firstNameCharacters = "Please insert your real first name";
+	public static $usernameCharacters = "Username must be beteween 5 and 25 characters";
 
-	}
+}
 
  ?>
-
- 
-		
-		
-
-		
-		
-
-		
-		
-		

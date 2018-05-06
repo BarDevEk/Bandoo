@@ -1,18 +1,16 @@
 <?php 
 
-	require_once("includes/classes/Account.php");
-	require_once("includes/classes/Constants.php");
+	include("includes/classes/Account.php");
+	include("includes/classes/Constants.php");
 
 	$account = new Account();
 
-	require_once("includes/handlers/register-handler.php");
-	require_once("includes/handlers/login-handler.php");
+	include("includes/handlers/register-handler.php");
+	include("includes/handlers/login-handler.php");
 
-// function that remembers inserted data after error validation
-	function rememberInput($x) {
-		if(isset($_POST[$x])) {
-			echo $_POST[$x];
-
+	function getInputValue($name){
+		if(isset($_POST[$name])){
+			echo $_POST[$name];
 		}
 	}
 
@@ -42,38 +40,39 @@
 		<form action="register.php" id="registerForm" method="POST">
 			<h2>Register for free and start the Bandoo</h2>
 			<p>
-				<?php echo $account->getError(Constants::$usertNameLength); ?>
+				<?php echo $account->getError(Constants::$usernameCharacters); ?>
 				<label for="registerUsername">Username:</label>
-				<input type="text" id="registerUsername" name="registerUsername" value=" <?php rememberInput('registerUsername') ?>" required>
+				<input type="text" id="registerUsername" name="registerUsername" value="<?php getInputValue('registerUsername');?>" required>
 			</p>
 			<p>
-				<?php echo $account->getError(Constants::$firstNameLength); ?>
+				<?php echo $account->getError(Constants::$firstNameCharacters); ?>
 				<label for="registerFirstName">First Name:</label>
-				<input type="text" id="registerFirstName" name="registerFirstName" value=" <?php rememberInput('registerFirstName') ?>" required>
+				<input type="text" id="registerFirstName" name="registerFirstName" value="<?php getInputValue('registerFirstName');?>" required>
 			</p>
 			<p>
-				<?php echo $account->getError(Constants::$lastNameLength); ?>
+				<?php echo $account->getError(Constants::$lastNameCharacters); ?>
 				<label for="registerLastName">Last Name:</label>
-				<input type="text" id="registerLastName" name="registerLastName" value=" <?php rememberInput('registerLastName') ?>" required>
+				<input type="text" id="registerLastName" name="registerLastName" value="<?php getInputValue('registerLastName');?>" required>
 			</p>
 			<p>
-				<?php echo $account->getError(Constants::$emailsNotEqual); ?>
+				<?php echo $account->getError(Constants::$emailsDoNotMatch); ?>
 				<?php echo $account->getError(Constants::$emailInvalid); ?>
 				<label for="registerEmail">Email:</label>
-				<input type="text" id="registerEmail" name="registerEmail" value=" <?php rememberInput('registerEmail') ?>" required>
+				<input type="text" id="registerEmail" name="registerEmail" value="<?php getInputValue('registerEmail');?>" required>
 			</p>
 			<p>
 				<label for="registerConfirmEmail">Confirm Email:</label>
-				<input type="text" id="registerConfirmEmail" name="registerConfirmEmail" value=" <?php rememberInput('registerConfirmEmail') ?>" required>
+				<input type="text" id="registerConfirmEmail" name="registerConfirmEmail"  value="<?php getInputValue('registerConfirmEmail');?>" required>
 			</p>
 			<p>
-				<?php echo $account->getError(Constants::$passwordsNotEqual); ?>
-				<?php echo $account->getError(Constants::$passwordInvalidChar); ?>
-				<?php echo $account->getError(Constants::$passwordInvalidLenght); ?>
+				<?php echo $account->getError(Constants::$passwordsDoNotMatch); ?>
+				<?php echo $account->getError(Constants::$passwordNotAlphanumeric); ?>
+				<?php echo $account->getError(Constants::$PasswordCharacters); ?>
 				<label for="registerPassword">Password:</label>
 				<input type="password" id="registerPassword" name="registerPassword" required>
 			</p>
 			<p>
+				
 				<label for="registerConfirmPassword">Confirm Password:</label>
 				<input type="password" id="registerConfirmPassword" name="registerConfirmPassword" required>
 			</p>
