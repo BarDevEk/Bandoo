@@ -1,12 +1,12 @@
 <?php 
+	require_once("require_onces/config.php");
+	require_once("require_onces/classes/Account.php");
+	require_once("require_onces/classes/Constants.php");
 
-	include("includes/classes/Account.php");
-	include("includes/classes/Constants.php");
+	$account = new Account($con);
 
-	$account = new Account();
-
-	include("includes/handlers/register-handler.php");
-	include("includes/handlers/login-handler.php");
+	require_once("require_onces/handlers/register-handler.php");
+	require_once("require_onces/handlers/login-handler.php");
 
 	function getInputValue($name){
 		if(isset($_POST[$name])){

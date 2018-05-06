@@ -1,10 +1,12 @@
 <?php 
 	class Account {
 
+		private $con;
 		private $errorArr;
 
-		public function __construct(){
+		public function __construct($con){
 			$this->errorArr = array();
+			$this->con = $con;
 		}
 
 		public function register($un,$fn,$ln,$em1, $em2, $pass1, $pass2){
@@ -18,7 +20,7 @@
 // checking if there are any errors
 			if(empty($this->errorArr)){
 // insert into databse
-				return true;
+				return $this->insertUserDetails($un, $fn, $ln, $em1, $pass1);
 			}else{
 				return false;
 			}
@@ -32,6 +34,16 @@
 			return "<span class='errorMessage'>$error</span>";
 		}
 		
+		private function insertUserDetails($un, $fn, $ln, $em1, $pass1){
+			$encryptedPass = md5($pass1);
+			$profilePic = "assets/images/profile-pics/anonimous.jpg";
+			$date = date("Y-m-d");
+
+			$result = mysqli_query($this->con, "INSERT INTO users VALUES ('', '$un', '$fn', '$ln', '$em1', '$encryptedPass', '$date', '$profilePic')");
+// line above returns true / false,
+			return $result;
+
+		}
 
 		private function validateUserName($un){
 			
