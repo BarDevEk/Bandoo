@@ -1,12 +1,26 @@
 <?php 
 	class Account {
 
-		private $con;
+		private $config;
 		private $errorArr;
 
-		public function __construct($con){
+		public function __construct($config){
 			$this->errorArr = array();
-			$this->con = $con;
+			$this->config = $config;
+		}
+
+		public function login($un, $pass){
+			$pass = md5($pass);
+
+			$loginUnQuery = mysqli_query($this->config, "SELECT * FROM users WHERE username='$un' AND password = '$pass'");
+
+			if(mysqli_num_rows($loginUnQuery)==1){
+				return true;
+			}
+			else{
+				array_push($this->errorArr,Constants::$loginFailed);
+				return false;
+			}
 		}
 
 		public function register($un,$fn,$ln,$em1, $em2, $pass1, $pass2){
@@ -39,7 +53,7 @@
 			$profilePic = "assets/images/profile-pics/anonimous.jpg";
 			$date = date("Y-m-d");
 
-			$result = mysqli_query($this->con, "INSERT INTO users VALUES ('', '$un', '$fn', '$ln', '$em1', '$encryptedPass', '$date', '$profilePic')");
+			$result = mysqli_query($this->config, "INSERT INTO users VALUES ('', '$un', '$fn', '$ln', '$em1', '$encryptedPass', '$date', '$profilePic')");
 // line above returns true / false,
 			return $result;
 
@@ -52,7 +66,13 @@
 				return;
 			}
 
-// CHECK if username exists
+// checking if username wasn't taken
+
+			$lookForUn = mysqli_query($this->config, "SELECT username FROM users WHERE username= '$un'" );
+				if(mysqli_num_rows($lookForUn)!=0){
+					array_push($this->errorArr,Constants::$usernameTaken);
+					return;
+				}
 		}
 
 		private function validateFirstName($fn){
@@ -83,8 +103,13 @@
 				return;
 			}
 
-// TODO Check if email wasn't already used
-			
+// checking if username wasn't taken
+
+			$lookForEm = mysqli_query($this->config, "SELECT email FROM users WHERE email= '$em1'" );
+				if(mysqli_num_rows($lookForEm)!=0){
+					array_push($this->errorArr,Constants::$emailTaken);
+					return;
+				}
 		}
 
 		private function validatePasswords($pass1, $pass2){

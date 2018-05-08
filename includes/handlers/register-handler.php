@@ -37,7 +37,9 @@ function sanitizeFormPassword ($inputString){
 		$registrationSucc=$account->register($registerUsername, $registerFirstname, $registerLastname, $registerEmail, $registerConfirmEmail, $registerPassword, $registerConfirmPassword);
 
 		if($registrationSucc == true){
+			$_SESSION['LoggedIn'] = $registerUsername;
 			header("Location:index.php");
+			exit();
 		}
 
 	}
