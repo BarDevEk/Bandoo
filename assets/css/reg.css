@@ -7,7 +7,7 @@
 	font-family: 'Montserrat', sans-serif;
 }
 
-html{
+html, body{
 	height: 100%;
 	width: 100%;
 	background-image:url(../images/register-background2.jpg); /* https://www.pexels.com/photo/broken-drumstick-close-up-dark-dirty-241687/*/
@@ -15,11 +15,6 @@ html{
 	background-position: center;
 	background-size: cover;
 }
-
-body{
-	height: 100%;
-	width: 100%;
-	}
 
 ::-webkit-scrollbar {
     width: 10px;

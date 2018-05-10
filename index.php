@@ -19,13 +19,29 @@
 	<meta charset="UTF-8">
 	<title>Welcome to Bandoo</title>
 	<link rel="stylesheet" href="assets/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900&amp;subset=latin-ext" rel="stylesheet">
 </head>
 <body>
 	
 	<div id="playBarContainer">
 
 		<div id="nowPlayingBar">
-			<div id="nowPlayingLeft"></div>
+			<div id="nowPlayingLeft">
+				<div class="content">
+					<span class="albumLink">
+						<img src="assets/images/album.png" alt="album">
+					</span>
+
+					<div class="trackInfo">
+						<span class="trackName">
+							<span>Brothers in Arms</span>
+						</span>
+						<span class="artistName">
+							<span>Dire Straits</span>
+						</span>
+					</div>
+				</div>
+			</div>
 			<div id="nowPlayingCenter">
 				<div class="content playerControls">
 					<div class="musicButtons">
@@ -63,7 +79,18 @@
 
 				</div> <!-- <div class="content playerControls"> -->
 			</div> <!-- <div id="nowPlayingCenter"> -->
-			<div id="nowPlayingRight"></div>
+			<div id="nowPlayingRight">
+				<div class="volumeBar">
+					<button class=" controlButton volume" title="volume">
+						<img src="assets/images/icons/volume.png" alt="volume">
+					</button>
+					<div class="progressBar">
+						<div class="progressBarBg">
+							<div class="progress"></div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 
 	</div> <!-- <div id="playBarContainer"> -->
