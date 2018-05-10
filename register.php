@@ -23,8 +23,37 @@
 	<title>Bandoo | Register for free !</title>
 	<link rel="stylesheet" href="assets/css/reg.css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900&amp;subset=latin-ext" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="assets/js/reg.js"></script>
 </head>
 <body>
+
+<?php 
+
+if(isset($_POST['registerButton'])){
+	echo '<script>
+		$(document).ready(function(){
+		$("#loginContainer").hide();
+		$("#registerInfo").hide();
+		$("#registerContainer").show();
+	})
+</script>';
+
+} else{
+		echo '<script>
+	$(document).ready(function(){
+		$("#loginContainer").show();
+		$("#registerInfo").show();
+		$("#registerContainer").hide();
+	})
+</script>';
+}
+
+ ?>
+
+
+
+
 	<div id="container">
 	<div id="inuputsContainer">
 		<div id="loginContainer">
@@ -34,20 +63,27 @@
 
 								<?php echo $account->getError(Constants::$loginFailed); ?>
 								<label for="loginUsername">Username:</label>
-								<input type="text" id="loginUsername" name="loginUsername" required>
+								<input type="text" id="loginUsername" name="loginUsername" value="<?php getInputValue('loginUsername');?>" required>
 							</p>
 							<p>
 								<label for="loginPassword">Password:</label>
 								<input type="password" id="loginPassword" name="loginPassword" required>
 							</p>
-							<button type="submit" name="loginButton">LOG IN</button>
+							<button id="loginBtn" type="submit" name="loginButton">LOG IN</button>
 						
 					</form>
 		</div>	<!-- <div id="loginContainer"> -->	
+		<div id="registerInfo">
+			<h2>Not a<br> member ?</h2>
+			<p>Register for free and explore the online platform which connects the world of free music.</p>
+
+							<button id="showRegisterBtn">Register Now</button>
+		</div>
 		<div id="registerContainer">
 					<form action="register.php" id="registerForm" method="POST">
-						<h2>Register for free</h2> 
-						<h4>and start the Bandoo</h4> 
+						<h2>Create an account</h2>
+						<div id="showLogin"> Already registered ?<strong><span id="returnToLogin">  CLICK HERE</span> </strong>
+						</div>
 						<p>
 							<?php echo $account->getError(Constants::$usernameCharacters); ?>
 							<?php echo $account->getError(Constants::$usernameTaken); ?>
@@ -87,7 +123,7 @@
 							<label for="registerConfirmPassword">Confirm Password:</label>
 							<input type="password" id="registerConfirmPassword" name="registerConfirmPassword" required>
 						</p>
-						<button type="submit" name="registerButton">SIGN UP</button>
+						<button id="signUpBtn" type="submit" name="registerButton">SIGN UP</button>
 					</form>
 				</div>	<!-- <div id="registerContainer"> -->
 			</div>	<!-- <div id="inuputsContainer"> -->

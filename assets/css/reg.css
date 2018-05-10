@@ -3,17 +3,48 @@
 	transition: all ease-in-out 250ms;
 	margin:0;
 	padding: 0;
+	cursor: default;
+	font-family: 'Montserrat', sans-serif;
 }
 
-html, body {
-	padding: 0;
-	margin:0;
+html{
 	height: 100%;
 	width: 100%;
-	font-family: 'Montserrat', sans-serif;
 	background-image:url(../images/register-background2.jpg); /* https://www.pexels.com/photo/broken-drumstick-close-up-dark-dirty-241687/*/
+	background-repeat:no-repeat;
 	background-position: center;
 	background-size: cover;
+}
+
+body{
+	height: 100%;
+	width: 100%;
+	}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 7px #737373; 
+    border-radius: 10px;1; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128,0.5);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+button:hover, #returnToLogin{
+	cursor: pointer;
+}
+
+input:hover{
+	cursor: text;
 }
 
 #container{
@@ -26,38 +57,65 @@ html, body {
 #inuputsContainer{
 	position: relative;
 	margin:0;
-	width: 65%;
+	width: 55%;
 	max-width: 1024px;
 
 }
 
-#loginContainer{
+#loginContainer, #registerContainer{
 	position: relative;
-	margin:0;
 	display: inline-block;
-	width:60%;
 	background-color: rgba(230, 230, 230, 0.95);
 	padding: 2rem;
 	color: #404040;
-	height: 21em;
+	
 }
 
 #registerContainer{
-	float: right;
-	width:40%;
+	display: none;
+	margin: auto;
+	top:0;
+	height: 100%;
+	width:60%;
+	overflow: auto;
+}
+
+#loginContainer{
+	height: 21em;
+	margin:0;
+	width:65%;
+}
+
+#registerInfo{
 	background-color: rgba(51, 51, 51, 0.8);
 	padding: 2rem;
 	color: #d9d9d9;
 	height: 21em;
+	float: right;
+	width:35%;
 }
 
-#loginContainer h2,h4, #registerContainer h2,h4{
+#registerInfo p{
+	position: absolute;
+	top: 7rem;
+}
+
+#registerInfo h2{
+	position: absolute;
+	margin-bottom: 1em;
+}
+
+#loginContainer h2,h4, #registerContainer h2,h4, #registerInfo h2,h4{
 	text-align: left;
 	text-transform: uppercase;
 }
 
-#loginContainer h2, #registerContainer h2{
+#loginContainer h2{
 	margin-bottom: 1em;
+}
+
+#registerContainer h2{
+	margin-bottom: 5px;
 }
 
 input[type="text"],input[type="email"],input[type="password"]{
@@ -65,27 +123,101 @@ input[type="text"],input[type="email"],input[type="password"]{
 	border: 0.2px solid #999999;
 	height: 2.5em;
 	line-height: 2.5em;
-	width:85%;
 	padding: 0 0.5em;
 	font-size: 1em;
 	color: #404040;
 	margin-bottom: 1.2em;
 }
 
+#loginContainer input[type="text"], #loginContainer input[type="password"]{
+	width:75%;
+}
+
+#registerContainer input[type="text"], #registerContainer input[type="password"]{
+	width:100%;
+}
+
+
+
 #loginPassword{
 	margin-bottom: 2em;
 }
 
 button{
-	width: 60%;
 	height: 3.5em;
-	background-color: rgba(96, 64, 31, 0.8);
-	color: #d9d9d9;
 	font-weight: 700;
 }
 
-button:hover{
-	cursor: pointer;
+#loginBtn, #returnBtn, #signUpBtn{
+	width: 45%;
+	background-color: rgba(96, 64, 31, 0.8);
+	color: #d9d9d9;
+}
+
+#returnBtn{
+	width: 20.4%;
+}
+
+#signUpBtn{
+	display: block
+	margin: auto;
+	background-color: rgba(96, 64, 31, 0.8);
+	color: #d9d9d9;
+}
+
+#loginBtn{
+	position: static;
+}
+
+#loginBtn:hover, #signUpBtn:hover{
 	background-color: rgba(96, 64, 31,0.95);
-	color: #cccccc;
+	color: #f2f2f2;
+}
+
+#showRegisterBtn{
+	position: static;
+	width: 100%;
+	background-color: transparent;
+	border: 2px solid #d9d9d9;
+	text-transform: uppercase;
+	color: #d9d9d9;
+	margin-top: 13.8rem;
+}
+
+#showRegisterBtn:hover{
+	 background-color: rgba(51, 51, 51, 0.95);
+	 border: 2px solid #a6a6a6;
+	 color: #fff;
+}
+
+#showLogin{
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+#returnToLogin{
+	color:#595959;
+}
+
+#bandooInfo{
+	position: absolute;
+	color: #fff;
+	top: 10px;
+	text-align: center;
+}
+
+.errorMessage{
+	display: block;
+	color: #ff5050;
+	font-size: 14px;
+}
+
+#loginContainer .errorMessage{
+	position: absolute;
+	top: 70px;
+}
+
+label{
+	display: block;
+	margin-top: 2px;
 }

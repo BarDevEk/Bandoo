@@ -1,0 +1,109 @@
+*{
+	box-sizing: border-box;
+	transition: all ease-in-out 250ms;
+	margin:0;
+	padding: 0;
+	cursor: default;
+	font-family: 'Montserrat', sans-serif;
+}
+
+html{
+	height: 100%;
+	height: 100%;
+	width: 100%;
+}
+
+#playBarContainer{
+	background: #595959;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, , #595959, #262626);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #595959, #262626 ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	width: 100%;
+	min-width: 620px;
+	position: fixed;
+	bottom: 0;
+}
+
+#nowPlayingBar{
+	display: flex;
+	height: 120px;
+	padding: 20px;
+}
+
+#nowPlayingLeft,
+#nowPlayingRight{
+	width: 30%;
+	min-width: 200px;
+}
+
+#nowPlayingCenter{
+	width: 40%;
+	max-width: 700px;
+	display: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+#nowPlayingBar .content{
+	width: 100%;
+}
+
+.musicButtons{
+	margin: 0 auto;
+	display: table;
+}
+
+.controlButton{
+	background-color: transparent;
+	border: none;
+	vertical-align: middle;
+	padding: 0 10px;
+}
+
+.controlButton img{
+	height: 33px;
+}
+
+.controlButton.play img,
+.controlButton.pause img{
+	height: 60px;
+}
+
+.controlButton img:hover{
+	cursor: pointer;
+}
+
+.playBarContainer{
+	display: flex;
+}
+
+.progressTime{
+	color:#348fcc;
+	font-size: 15px;
+	min-width: 40px;
+	text-align: center;
+}
+
+.progressBar{
+	width:100%;
+	height: 12px;
+	display: inline-flex;
+	cursor: pointer;
+}
+
+.progressBarBg{
+	background-color: #24648f;
+	height: 5px;
+	width: 100%;
+	border-radius: 5px;
+}
+
+.progress{
+	background-color: #5ca5d6;
+	height: 5px;
+	width: 0%;
+	border-radius: 5px;
+}
+
+.playBarContainer .progressBar{
+	margin-top: 5px;
+}
